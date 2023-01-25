@@ -39,7 +39,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "DrinkList"
 
 
 
