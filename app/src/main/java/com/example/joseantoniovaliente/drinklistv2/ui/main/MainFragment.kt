@@ -1,4 +1,4 @@
-package com.example.joseantoniovaliente.drinklist.ui.main
+package com.example.joseantoniovaliente.drinklistv2.ui.main
 
 
 import android.os.Bundle
@@ -8,11 +8,13 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.joseantoniovaliente.drinklist.ui.detail.DetailFragment
+import com.example.joseantoniovaliente.drinklist.ui.main.MainViewModel
 import com.example.joseantoniovaliente.drinklistv2.R
 import com.example.joseantoniovaliente.drinklistv2.databinding.FragmentMainBinding
 import com.example.joseantoniovaliente.drinklistv2.model.Drink
-import com.example.joseantoniovaliente.drinklistv2.ui.main.CocktailAdapter
+import com.example.joseantoniovaliente.drinklistv2.ui.detail.DetailFragment
+
+
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {

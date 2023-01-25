@@ -1,4 +1,4 @@
-package com.example.joseantoniovaliente.drinklist.ui.detail
+package com.example.joseantoniovaliente.drinklistv2.ui.detail
 
 import android.os.Bundle
 import android.view.View
@@ -9,15 +9,13 @@ import com.example.joseantoniovaliente.drinklistv2.R
 import com.example.joseantoniovaliente.drinklistv2.databinding.FragmentDetailBinding
 import com.example.joseantoniovaliente.drinklistv2.loadUrl
 import com.example.joseantoniovaliente.drinklistv2.model.Drink
-import com.example.joseantoniovaliente.drinklistv2.ui.detail.DetailViewModel
-import com.example.joseantoniovaliente.drinklistv2.ui.detail.DetailViewModelFactory
 
 
 class DetailFragment() : Fragment(R.layout.fragment_detail) {
     private val viewModel: DetailViewModel by viewModels {
         DetailViewModelFactory(
             arguments?.getParcelable<Drink>(
-                EXTRA_DRINK
+                DetailFragment.EXTRA_DRINK
             )!!
         )
     }

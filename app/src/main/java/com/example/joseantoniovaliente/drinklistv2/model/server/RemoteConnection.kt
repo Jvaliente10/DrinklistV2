@@ -20,5 +20,5 @@ object RemoteConnection {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service= builder.create(CocktailDbService::class.java)
+    val service: CocktailDbService = builder.create(CocktailDbService::class.java)
 }
