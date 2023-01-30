@@ -1,4 +1,4 @@
-package com.example.joseantoniovaliente.drinklist.ui.main
+package com.example.joseantoniovaliente.drinklistv2.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -34,17 +34,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                     adapter.drinkList = state.drinks
                     adapter.notifyDataSetChanged()
                 }
-
-
-
-
             }
         }
-
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "DrinkList"
-
-
-
     }
 
     private fun navigateTo(drink: Drink) {
