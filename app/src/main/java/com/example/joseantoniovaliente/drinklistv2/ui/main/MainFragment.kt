@@ -8,7 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.joseantoniovaliente.drinklist.ui.main.MainViewModel
+import com.example.joseantoniovaliente.drinklistv2.ui.main.MainViewModel
 import com.example.joseantoniovaliente.drinklistv2.R
 import com.example.joseantoniovaliente.drinklistv2.databinding.FragmentMainBinding
 import com.example.joseantoniovaliente.drinklistv2.model.Drink

@@ -36,6 +36,24 @@ class DetailFragment() : Fragment(R.layout.fragment_detail) {
                 binding.category.text ="Drink category: " + drinkDetail.strCategory
                 binding.glass.text="Glass: " + drinkDetail.strGlass
                 binding.instructions.text ="Instructions: " + drinkDetail.strInstructions
+                var ingredientes =""
+                if(drinkDetail.strIngredient1!=null){
+                    ingredientes  += drinkDetail.strIngredient1 + ", "
+                }
+                if(drinkDetail.strIngredient2!=null){
+                    ingredientes += drinkDetail.strIngredient2 + ", "
+                }
+                if(drinkDetail.strIngredient3!=null){
+                    ingredientes += drinkDetail.strIngredient3 + ", "
+                }
+                if(drinkDetail.strIngredient4!=null){
+                    ingredientes += drinkDetail.strIngredient4
+                }
+                binding.ingredients.text="Ingredientes: " + ingredientes
+
+
+
+
                 (requireActivity() as AppCompatActivity).supportActionBar?.title = drinkDetail.idDrink
 
             }
