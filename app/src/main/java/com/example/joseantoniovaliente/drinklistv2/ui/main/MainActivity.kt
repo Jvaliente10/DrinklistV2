@@ -12,7 +12,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.joseantoniovaliente.drinklistv2.R
 import com.example.joseantoniovaliente.drinklistv2.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 
+enum class ProviderType{
+    BASIC
+}
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -42,6 +48,18 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        setUp()
+    }
+
+    private fun setUp(){
+
+        title = "Pincipal"
+        logOut.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            onBackPressed()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
