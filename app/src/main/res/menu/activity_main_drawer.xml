@@ -4,12 +4,9 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_principal"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_principal" />
-        <item
-            android:id="@+id/nav_list"
+            android:id="@+id/nav_lista"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_lista" />
         <item

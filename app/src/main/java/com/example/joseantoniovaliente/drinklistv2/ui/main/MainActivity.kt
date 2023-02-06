@@ -1,5 +1,6 @@
 package com.example.joseantoniovaliente.drinklistv2.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.navigation.NavigationView
@@ -12,6 +13,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.joseantoniovaliente.drinklistv2.R
 import com.example.joseantoniovaliente.drinklistv2.databinding.ActivityMainBinding
+import com.example.joseantoniovaliente.drinklistv2.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.app_bar_main.*
+
+enum class ProviderType{
+    BASIC
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,11 +45,17 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_lista, R.id.nav_form
+                R.id.nav_lista, R.id.nav_form,
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        logOut.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

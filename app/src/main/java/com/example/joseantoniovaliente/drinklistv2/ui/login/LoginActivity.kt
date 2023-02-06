@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.example.joseantoniovaliente.drinklistv2.R
-import com.example.joseantoniovaliente.drinklistv2.ui.home.HomeActivity
-import com.example.joseantoniovaliente.drinklistv2.ui.home.ProviderType
+import com.example.joseantoniovaliente.drinklistv2.ui.main.MainActivity
+import com.example.joseantoniovaliente.drinklistv2.ui.main.ProviderType
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
@@ -74,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun navHome(email:String, providerType: ProviderType){
-        val homeIntent = Intent(this, HomeActivity::class.java).apply {
+        val homeIntent = Intent(this, MainActivity::class.java).apply {
 
         }
         startActivity(homeIntent)

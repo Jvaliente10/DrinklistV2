@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="#6296C1"
-    android:layout_marginTop="50dp">
+    tools:context=".ui.form.FormFragment">
 
     <TextView
         android:id="@+id/textName"
@@ -90,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/form_bg_round"
+            android:backgroundTint="#CF1515"
             android:onClick="onLoadImageClick"
             android:text="Cargar imagen" />
 

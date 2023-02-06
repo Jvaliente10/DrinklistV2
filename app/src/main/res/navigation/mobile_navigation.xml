@@ -6,7 +6,6 @@
     app:startDestination="@+id/nav_lista">
 
 
-
     <fragment
         android:id="@+id/nav_lista"
         android:name="com.example.joseantoniovaliente.drinklistv2.ui.main.MainFragment"
@@ -28,7 +27,7 @@
 
     <fragment
         android:id="@+id/nav_form"
-        android:name="com.example.joseantoniovaliente.drinklistv2.ui."
+        android:name="com.example.joseantoniovaliente.drinklistv2.ui.form.FormFragment"
         android:label="@string/menu_formulario"
         tools:layout="@layout/fragment_formulario" />
 </navigation>
