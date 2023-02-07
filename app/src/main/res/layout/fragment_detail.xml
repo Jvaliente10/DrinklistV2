@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8BEFD3"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ui.detail.DetailFragment">
@@ -76,7 +76,9 @@
                 android:scrollbars="vertical"
                 android:textColor="#555"
                 android:textSize="16sp"/>
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
             <TextView
                 android:id="@+id/instructions"
                 android:layout_width="match_parent"
@@ -92,7 +94,7 @@
                 android:textColor="#555"
                 android:textSize="16sp" />
 
-
+</ScrollView>
 
 
         </LinearLayout>

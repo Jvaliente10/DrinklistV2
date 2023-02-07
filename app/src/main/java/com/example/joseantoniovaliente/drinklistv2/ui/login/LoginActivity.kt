@@ -77,7 +77,9 @@ class LoginActivity : AppCompatActivity() {
         val homeIntent = Intent(this, MainActivity::class.java).apply {
 
         }
+        homeIntent.putExtra("email", email)
         startActivity(homeIntent)
+
     }
 
 }
