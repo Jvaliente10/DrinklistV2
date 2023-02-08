@@ -10,11 +10,13 @@ import com.example.joseantoniovaliente.drinklistv2.ui.main.ProviderType
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var firebaseAnalytics: FirebaseAnalytics
+    private val db = FirebaseFirestore.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,17 +35,40 @@ class LoginActivity : AppCompatActivity() {
     private fun setUp(){
         title="Login"
 
-        resgistrar.setOnClickListener{
-            if (email.text.isNotEmpty() && password.text.isNotEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),
-                    password.text.toString()).addOnCompleteListener{
-                        if ( it.isSuccessful){
-                            it.result.user?.email?.let { it1 -> navHome(it1, ProviderType.BASIC) }
-                        }else{
-                            alertError()
+        resgistrar.setOnClickListener{if (email.text.isNotEmpty() && password.text.isNotEmpty()){
+            // Primero se comprueba si ya existe un usuario con ese correo electrónico
+            db.collection("usuarios").whereEqualTo("email", email.text.toString()).get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Si se encontró un documento con ese correo electrónico, significa que ya existe un usuario con ese correo
+                    if (!task.result!!.isEmpty) {
+                        // Mostrar un mensaje de error
+                        val alertError = AlertDialog.Builder(this)
+                        alertError.setTitle("Error")
+                        alertError.setMessage("Ya existe un usuario registrado con ese correo electrónico")
+                        alertError.setPositiveButton("OK",null)
+                        val dialog: AlertDialog= alertError.create()
+                        dialog.show()
+                    } else {
+                        // Si no existe un usuario con ese correo electrónico, se procede a registrar al nuevo usuario
+                        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(), password.text.toString()).addOnCompleteListener {
+                            if ( it.isSuccessful){
+                                it.result.user?.email?.let { it1 ->
+                                    // Guardar el usuario en la colección "usuarios"
+                                    val usuario = hashMapOf(
+                                        "email" to it1
+                                    )
+                                    db.collection("usuarios").add(usuario).addOnSuccessListener {
+                                        navHome(it1, ProviderType.BASIC)
+                                    }
+                                }
+                            } else {
+                                alertError()
+                            }
                         }
+                    }
                 }
             }
+        }
         }
 
         login.setOnClickListener{

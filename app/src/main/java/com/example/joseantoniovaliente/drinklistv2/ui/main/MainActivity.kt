@@ -16,6 +16,7 @@ import com.example.joseantoniovaliente.drinklistv2.R
 import com.example.joseantoniovaliente.drinklistv2.databinding.ActivityMainBinding
 import com.example.joseantoniovaliente.drinklistv2.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 enum class ProviderType{
