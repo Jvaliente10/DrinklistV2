@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#6296C1"
+    android:background="@drawable/gradient"
     tools:context=".ui.form.FormFragment">
 
     <TextView
@@ -14,13 +14,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Nombre de la bebida:"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
 
         />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/nameForm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -29,7 +29,31 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:padding="8dp"
-        android:textColorHint="#224449"
+        android:textColorHint="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Ingredientes:"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/ingredientsForms"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/form_bg_round"
+        android:gravity="top"
+        android:hint="Ingresa los ingredientes separados por coma"
+        android:inputType="textMultiLine"
+        android:minHeight="96dp"
+        android:padding="8dp"
+        android:textColorHint="#000000"
         android:textSize="18sp" />
 
     <TextView
@@ -39,11 +63,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:text="Instrucciones:"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/instructions"
+        android:id="@+id/instructionsForms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -53,29 +77,10 @@
         android:inputType="textMultiLine"
         android:minHeight="96dp"
         android:padding="8dp"
-        android:textColorHint="#224449"
+        android:textColorHint="#000000"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textIngredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Ingredientes:"
-        android:textColor="#000000"
-        android:textSize="18sp"
 
-        />
-
-    <Spinner
-        android:id="@+id/ingredients"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/form_bg_round"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:textSize="18sp"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 
     <LinearLayout
@@ -86,22 +91,20 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/load_image"
+            android:id="@+id/loadImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/form_bg_round"
-            android:backgroundTint="#CF1515"
-            android:onClick="onLoadImageClick"
-            android:text="Cargar imagen" />
+            android:layout_weight="1"
+            android:backgroundTint="#090909"
+            android:text="Cargar Imagen" />
 
         <Button
-            android:id="@+id/accept"
+            android:id="@+id/addCocktail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/form_bg_round"
-            android:onClick="onAcceptClick"
-            android:text="Aceptar" />
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            android:text="Guardar" />
 
     </LinearLayout>
 

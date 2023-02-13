@@ -1,15 +1,32 @@
 package com.example.joseantoniovaliente.drinklistv2.ui.form
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.joseantoniovaliente.drinklistv2.R
+import com.example.joseantoniovaliente.drinklistv2.databinding.FragmentFormularioBinding
+import com.example.joseantoniovaliente.drinklistv2.model.db.CocktailDb
 
-import kotlinx.android.synthetic.main.fragment_formulario.*
 
 class FormFragment : Fragment() {
+    private val formViewModel: FormViewModel by viewModels()
+    private lateinit var binding: FragmentFormularioBinding
+    var selectedImage =""
+    val pickmedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri ->
+        if (uri!=null){
+            selectedImage= uri.toString()
+        }
+    }
+
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,13 +38,24 @@ class FormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentFormularioBinding.bind(view)
 
-        load_image.setOnClickListener {
+        binding.loadImage.setOnClickListener {
+            pickmedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+
+
 
         }
 
-        accept.setOnClickListener {
+
+        binding.addCocktail.setOnClickListener {
+            val coctel = CocktailDb(binding.nameForm.text.toString(),binding.ingredientsForms.text.toString(),
+                binding.instructionsForms.text.toString(),selectedImage)
+            formViewModel.createCoctel(coctel)
+
 
         }
     }
+
+
 }

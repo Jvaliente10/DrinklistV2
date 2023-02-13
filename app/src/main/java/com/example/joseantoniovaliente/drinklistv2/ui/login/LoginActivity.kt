@@ -55,9 +55,9 @@ class LoginActivity : AppCompatActivity() {
                                 it.result.user?.email?.let { it1 ->
                                     // Guardar el usuario en la colección "usuarios"
                                     val usuario = hashMapOf(
-                                        "email" to it1
+                                        "provider" to ProviderType.BASIC.toString()
                                     )
-                                    db.collection("usuarios").add(usuario).addOnSuccessListener {
+                                    db.collection("usuarios").document(it1).set(usuario).addOnSuccessListener {
                                         navHome(it1, ProviderType.BASIC)
                                     }
                                 }
