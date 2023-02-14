@@ -41,13 +41,6 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Si se encontró un documento con ese correo electrónico, significa que ya existe un usuario con ese correo
                     if (!task.result!!.isEmpty) {
-                        // Mostrar un mensaje de error
-                        val alertError = AlertDialog.Builder(this)
-                        alertError.setTitle("Error")
-                        alertError.setMessage("Ya existe un usuario registrado con ese correo electrónico")
-                        alertError.setPositiveButton("OK",null)
-                        val dialog: AlertDialog= alertError.create()
-                        dialog.show()
                     } else {
                         // Si no existe un usuario con ese correo electrónico, se procede a registrar al nuevo usuario
                         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(), password.text.toString()).addOnCompleteListener {
@@ -62,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                                     }
                                 }
                             } else {
-                                alertError()
+                                alertAuthError()
                             }
                         }
                     }
@@ -78,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                     if ( it.isSuccessful){
                         it.result.user?.email?.let { it1 -> navHome(it1, ProviderType.BASIC) }
                     }else{
-                        alertError()
+                        alertAuthError()
                     }
                 }
             }
@@ -87,14 +80,13 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
-    private fun alertError(){
+    private fun alertAuthError(){
         val alertError = AlertDialog.Builder(this)
         alertError.setTitle("Error")
         alertError.setMessage("Se ha producido un error con la autenticación del usuario")
         alertError.setPositiveButton("OK",null)
         val dialog: AlertDialog= alertError.create()
         dialog.show()
-
     }
 
 

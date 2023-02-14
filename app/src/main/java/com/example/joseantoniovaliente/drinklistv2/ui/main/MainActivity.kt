@@ -25,7 +25,6 @@ enum class ProviderType{
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var emailTextView: TextView
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_lista, R.id.nav_form,
+                R.id.nav_lista, R.id.nav_form ,R.id.nav_userLista, R.id.nav_home
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -59,9 +58,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //emailTextView = findViewById(R.id.emailUser)
-        //val email = intent.getStringExtra("email")
-        //emailTextView.text = email
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

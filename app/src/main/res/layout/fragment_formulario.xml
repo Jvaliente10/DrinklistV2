@@ -33,10 +33,59 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/textCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Categoria de la bebida:"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+
+        />
+
+    <EditText
+        android:id="@+id/categoryForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/form_bg_round"
+        android:hint="Ingresa la categoria"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColorHint="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textGlass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Tipo de vaso:"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+
+        />
+
+    <EditText
+        android:id="@+id/glassForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/form_bg_round"
+        android:hint="Ingresa el tipo de vaso"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColorHint="#000000"
+        android:textSize="18sp" />
+
+
+
+    <TextView
         android:id="@+id/textIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:text="Ingredientes:"
         android:textColor="#FFFFFF"
@@ -60,7 +109,6 @@
         android:id="@+id/textInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:text="Instrucciones:"
         android:textColor="#FFFFFF"
@@ -96,7 +144,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#090909"
-            android:text="Cargar Imagen" />
+            android:minHeight="48dp"
+            android:text="Cargar Imagen"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/addCocktail"
@@ -104,7 +154,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#000000"
-            android:text="Guardar" />
+            android:minHeight="48dp"
+            android:text="Guardar"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 

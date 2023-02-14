@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_lista">
+    app:startDestination="@+id/nav_home">
 
 
     <fragment
@@ -47,5 +47,18 @@
         android:id="@+id/nav_form"
         android:name="com.example.joseantoniovaliente.drinklistv2.ui.form.FormFragment"
         android:label="@string/menu_formulario"
-        tools:layout="@layout/fragment_formulario" />
+        tools:layout="@layout/fragment_formulario" >
+        <action
+            android:id="@+id/action_formFragment_to_homeFragment"
+            app:destination="@id/nav_home"
+            app:enterAnim="@anim/slide_left_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_right_in"
+            app:popExitAnim="@anim/slide_right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.joseantoniovaliente.drinklistv2.ui.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

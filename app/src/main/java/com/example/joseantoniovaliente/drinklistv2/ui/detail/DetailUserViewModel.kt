@@ -1,16 +1,27 @@
 package com.example.joseantoniovaliente.drinklistv2.ui.detail
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.joseantoniovaliente.drinklistv2.model.db.CocktailDb
+import com.example.joseantoniovaliente.drinklistv2.model.db.DbFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DetailUserViewModel(cocktailDb: CocktailDb) : ViewModel() {
+class DetailUserViewModel(private val cocktailDb: CocktailDb) : ViewModel() {
     private val _state = MutableLiveData(UiState())
     val details: MutableLiveData<UiState> get() = _state
+
+
+
+    fun updateCocktailName(newName: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            DbFirestore.updateCocktailName(cocktailDb, newName)
+        }
+    }
+    fun deleteCocktail(){
+        viewModelScope.launch(Dispatchers.IO) {
+            DbFirestore.deleteCocktail(cocktailDb)
+        }
+    }
     init {
 
         val nameDrink=cocktailDb.nombre
@@ -18,6 +29,7 @@ class DetailUserViewModel(cocktailDb: CocktailDb) : ViewModel() {
 
         viewModelScope.launch(Dispatchers.Main) {
             _state.value = _state.value?.copy(loading = true)
+            _state.value = _state.value?.copy(loading = false, details = DbFirestore.getCocktailByName(nameDrink))
 
 
 
@@ -27,9 +39,12 @@ class DetailUserViewModel(cocktailDb: CocktailDb) : ViewModel() {
 
 
 
+
+
+
     data class UiState(
         val loading: Boolean = false,
-        val details: List<CocktailDb>? = null,
+        val details: CocktailDb? = null,
         val navigateTo: CocktailDb? = null
     )
 }

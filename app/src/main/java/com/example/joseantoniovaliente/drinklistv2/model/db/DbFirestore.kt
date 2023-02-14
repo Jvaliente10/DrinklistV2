@@ -14,23 +14,21 @@ object DbFirestore {
     const val COLLECTION_COCKTAILS = "Cocteles"
     private val currentUser = FirebaseAuth.getInstance().currentUser
 
-    suspend fun getAll(): List<CocktailDb> {
-
-        val snapshot = currentUser?.let {
+    suspend fun getCocktailByName(name: String): CocktailDb? {
+        var cocktail: CocktailDb? = null
+        currentUser?.let {
             FirebaseFirestore.getInstance()
                 .collection(COLLECTION_USERS)
-                .document(it.uid)
+                .document(currentUser.email.toString())
                 .collection(COLLECTION_COCKTAILS)
-                .get().await()
+                .whereEqualTo("nombre", name)
+                .get().await().apply {
+                    if (!isEmpty) {
+                        cocktail = first().toObject(CocktailDb::class.java)
+                    }
+                }
         }
-        val cocktails = mutableListOf<CocktailDb>()
-        if (snapshot != null) {
-            for (documentSnapshot in snapshot) {
-                val cocktail = documentSnapshot.toObject(CocktailDb::class.java)
-                cocktails.add(cocktail)
-            }
-        }
-        return cocktails
+        return cocktail
     }
     suspend fun createCocktail(cocktail: CocktailDb) {
         currentUser?.let {
@@ -68,13 +66,19 @@ object DbFirestore {
 
 
     suspend fun updateCocktailName(currentCocktail: CocktailDb, newName: String){
-        FirebaseFirestore.getInstance().collection(COLLECTION_COCKTAILS)
+        FirebaseFirestore.getInstance()
+            .collection(COLLECTION_USERS)
+            .document(currentUser?.email.toString())
+            .collection(COLLECTION_COCKTAILS)
             .whereEqualTo("nombre", currentCocktail.nombre)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     val id = task.result.first().id
-                    FirebaseFirestore.getInstance().collection(COLLECTION_COCKTAILS)
+                    FirebaseFirestore.getInstance()
+                        .collection(COLLECTION_USERS)
+                        .document(currentUser?.email.toString())
+                        .collection(COLLECTION_COCKTAILS)
                         .document(id)
                         .update("nombre", newName)
                         .addOnCompleteListener{
@@ -93,7 +97,7 @@ object DbFirestore {
         currentUser?.let {
             FirebaseFirestore.getInstance()
                 .collection(COLLECTION_USERS)
-                .document(it.uid)
+                .document(currentUser?.email.toString())
                 .collection(COLLECTION_COCKTAILS)
                 .whereEqualTo("nombre", cocktail.nombre)
                 .get()
@@ -102,7 +106,7 @@ object DbFirestore {
                         val id = it.result.first().id
                         FirebaseFirestore.getInstance()
                             .collection(COLLECTION_USERS)
-                            .document(currentUser.uid)
+                            .document(currentUser?.email.toString())
                             .collection(COLLECTION_COCKTAILS)
                             .document(id)
                             .delete()
