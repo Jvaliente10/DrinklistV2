@@ -121,7 +121,10 @@ object DbFirestore {
     }
 
     fun getFlow(): Flow<List<CocktailDb>> {
+
         return FirebaseFirestore.getInstance()
+            .collection(COLLECTION_USERS)
+            .document(currentUser?.email.toString())
             .collection(COLLECTION_COCKTAILS)
             .orderBy("nombre", Query.Direction.DESCENDING)
             .snapshots().map { snapshot ->

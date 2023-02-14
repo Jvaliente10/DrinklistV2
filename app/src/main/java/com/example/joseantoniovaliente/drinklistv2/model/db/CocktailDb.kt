@@ -6,10 +6,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CocktailDb(
-    val nombre: String="",
-    val ingredientes: String="",
-    val instrucciones: String="",
-    val imagen: String=""
+    var nombre: String="",
+    var ingredientes: String="",
+    var instrucciones: String="",
+    var imagen: String=""
 
 ): Parcelable{
 

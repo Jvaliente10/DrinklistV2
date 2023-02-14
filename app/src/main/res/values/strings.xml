@@ -10,6 +10,7 @@
     <string name="menu_principal">Principal</string>
     <string name="menu_formulario">Formulario</string>
     <string name="menu_lista">Lista de bebidas</string>
+    <string name="menu_userLista">Lista de bebidas del usuario</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_login">LoginActivity</string>
