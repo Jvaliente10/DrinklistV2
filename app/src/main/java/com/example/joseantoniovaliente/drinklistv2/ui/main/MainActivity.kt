@@ -3,6 +3,7 @@ package com.example.joseantoniovaliente.drinklistv2.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -51,12 +52,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        logOut.setOnClickListener{
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-        }
+
 
 
     }
@@ -65,6 +61,18 @@ class MainActivity : AppCompatActivity() {
 
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.logOut->{
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {
