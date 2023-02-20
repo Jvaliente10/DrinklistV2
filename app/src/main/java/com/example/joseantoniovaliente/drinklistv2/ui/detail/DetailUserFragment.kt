@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.joseantoniovaliente.drinklistv2.R
 import com.example.joseantoniovaliente.drinklistv2.databinding.FragmentDetailBinding
 import com.example.joseantoniovaliente.drinklistv2.databinding.FragmentDetailUserBinding
@@ -52,17 +53,26 @@ class DetailUserFragment : Fragment(R.layout.fragment_detail_user) {
                 onSubmitClickListener = { nombre->
                     if (nombre.isNotBlank()){
                         viewModel.updateCocktailName(nombre)
+                        navigateTo()
                     }
 
                 }
             ).show(requireFragmentManager(),"Modificar Nombre")
 
         }
+
         binding.floatingActionButton.setOnClickListener{
             viewModel.deleteCocktail()
+            navigateTo()
+
 
         }
 
 
     }
+    private fun navigateTo() {
+        findNavController().navigate(R.id.action_userDetailFragment_to_nav_userLista)
+
+    }
+
 }

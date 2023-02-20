@@ -41,7 +41,21 @@
         android:id="@+id/userDetailFragment"
         android:name="com.example.joseantoniovaliente.drinklistv2.ui.detail.DetailUserFragment"
         android:label="CocktailDetalles"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_userDetailFragment_to_nav_userLista"
+            app:destination="@id/nav_userLista"
+            app:enterAnim="@anim/slide_left_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_right_in"
+            app:popExitAnim="@anim/slide_right_out" />
+        <action
+            android:id="@+id/action_userDetailFragment_to_nav_userLista2"
+            app:destination="@id/nav_userLista" />
+        <action
+            android:id="@+id/action_userDetailFragment_to_nav_userLista3"
+            app:destination="@id/nav_userLista" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_form"
