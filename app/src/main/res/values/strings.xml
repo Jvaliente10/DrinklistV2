@@ -22,4 +22,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="todo">TODO</string>
+    <string name="welcome_to_the_drinklist">Welcome to the DrinkList</string>
 </resources>

@@ -43,6 +43,9 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
+        val headerView = navView.getHeaderView(0)
+        var tittle = headerView.findViewById<TextView>(R.id.emailUser)
+        tittle.text= FirebaseAuth.getInstance().currentUser?.email.toString()
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
         appBarConfiguration = AppBarConfiguration(
